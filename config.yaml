@@ -1,5 +1,11 @@
 # LIONNA x OEM Catalog Matcher
 
+source:
+  github_repo: "natylion/lionna-match"
+  github_ref:  "main"
+  catalogs_subdir: "catalogs"
+  local_dir: "catalogs"
+
 Cross-references LIONNA SS27 pieces against OEM supplier catalogs (PDF line-sheets)
 to surface similar models. Matching is **attribute-based, category-gated, and
 construction-flagged** — not raw image-vs-image, which drowns activewear in false
