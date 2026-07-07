@@ -1,0 +1,9 @@
+pymupdf>=1.24
+pypdf>=4.0
+pdfplumber>=0.11
+pillow>=10.0
+numpy>=1.26
+pyyaml>=6.0
+# --- optional vision prefilter (CLIP). Uncomment to shrink the tagging queue ---
+# open-clip-torch>=2.24
+# torch>=2.2

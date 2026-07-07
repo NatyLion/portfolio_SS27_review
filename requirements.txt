@@ -1,0 +1,29 @@
+# Vision tagging instructions (for Claude Code)
+
+You are labelling OEM product crops so they can be matched to LIONNA pieces.
+Read `data/tagging_queue.jsonl`. For **each** crop line, open the image at
+`data/crops/<crop>` and append **one JSON line** to `data/vision_tags.jsonl`.
+
+Use the `hint_types` / `hint_materials` / `hint_skus` on the queue line as
+context, but decide from the image.
+
+## Output schema (one line per crop)
+```json
+{"crop":"<filename>","category":"<taxonomy or unknown>","attrs":{"feature":0.0},"construction_visual":"seamless|cut-and-sew|unknown","notes":"<short>"}
+```
+
+## Rules
+- `category`: pick ONE from config.yaml `categories` keys, or `"unknown"`.
+- `attrs`: 0..1 salience of *defining* features. Reuse the LIONNA vocabulary in
+  `lionna/queries.yaml` so scores are comparable — e.g. for tops:
+  `sheer_mesh_panel, fitted_sculpt, layering, crew_neck, thumbhole, opaque_body,
+  strappy_back, keyhole_back, polo_collar, longline`; for bottoms:
+  `high_waist, sculpt_seams, no_front_seam, squat_proof, full_length, wide_leg,
+  front_pleat, hidden_pocket, elastic_cuff, drawcord`.
+- `construction_visual`: judge from stitch/seam cues. Flat visible seams / bound
+  edges / coverstitch hems => `cut-and-sew`. Tubular, no side seams, knit-in
+  ribbing/bands => `seamless`. If unsure => `unknown` (the pipeline falls back to
+  the catalog-level inference).
+- Skip pure swatch/colorway thumbnails (no garment) — write `category:"unknown"` with a note.
+- Near-duplicate colorways of one style: tag one representative fully; others can
+  reuse its attrs.

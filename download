@@ -1,0 +1,39 @@
+"""Pull catalog PDFs from a (private) GitHub repo, or use a local folder.
+
+Order of precedence:
+  1. source.local_dir  -> copy *.pdf from a local path (Claude Code on your machine)
+  2. GITHUB_TOKEN env   -> git clone https with token (private repos)
+  3. plain git clone    -> relies on your `gh auth` / SSH agent
+"""
+import os, subprocess, shutil, glob
+from pathlib import Path
+
+
+def fetch(cfg):
+    src = cfg["source"]
+    pdfs_dir = Path(cfg["paths"]["pdfs"]); pdfs_dir.mkdir(parents=True, exist_ok=True)
+
+    local = src.get("local_dir")
+    if local:
+        for p in glob.glob(os.path.join(local, "*.pdf")):
+            shutil.copy(p, pdfs_dir / os.path.basename(p))
+        found = sorted(pdfs_dir.glob("*.pdf"))
+        print(f"[fetch] using {len(found)} local PDFs from {local}")
+        return found
+
+    repo = src["github_repo"]; ref = src.get("github_ref", "main")
+    sub  = src.get("catalogs_subdir", "")
+    token = os.environ.get("GITHUB_TOKEN")
+    clone_dir = Path(cfg["paths"]["work"]) / "_repo"
+    if clone_dir.exists():
+        shutil.rmtree(clone_dir)
+    if token:
+        url = f"https://x-access-token:{token}@github.com/{repo}.git"
+    else:
+        url = f"https://github.com/{repo}.git"   # gh/SSH creds
+    subprocess.run(["git", "clone", "--depth", "1", "--branch", ref, url, str(clone_dir)], check=True)
+    for p in glob.glob(str(clone_dir / sub / "*.pdf")):
+        shutil.copy(p, pdfs_dir / os.path.basename(p))
+    found = sorted(pdfs_dir.glob("*.pdf"))
+    print(f"[fetch] pulled {len(found)} PDFs from {repo}@{ref}/{sub}")
+    return found
