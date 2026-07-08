@@ -1,0 +1,45 @@
+# ============================================================
+# LIONNA x OEM catalog matcher — configuration
+# ============================================================
+source:
+  github_repo: "NatyLion/lionna-match"
+  github_ref:  "main"
+  catalogs_subdir: "catalogs"
+  local_dir: "catalogs"          # lê PDFs (recursivo) de catalogs/ e ignora download
+
+catalogs:
+  - file: "*.pdf"
+    default_construction: "auto"  # auto | seamless | cut-and-sew
+
+paths:
+  work:   "data"
+  pdfs:   "data/pdfs"
+  crops:  "data/crops"
+  db:     "data/oem_db.json"
+  queue:  "data/tagging_queue.jsonl"
+  tags:   "data/vision_tags.jsonl"
+  report: "data/report/index.html"
+
+rasterize_dpi: 150
+cell_min_area_frac: 0.01
+cell_max_area_frac: 0.60
+
+categories:
+  sports bra:   [bra, bralette]
+  tank:         [tank]
+  long sleeve:  [long sleeve, long-sleeve]
+  short sleeve: [short sleeve, short-sleeve, t-shirt, tee]
+  crop top:     [crop]
+  legging:      [legging, leggings]
+  shorts:       [shorts]
+  skirt:        [skirt]
+  dress:        [dress]
+  polo:         [polo]
+  jacket:       [jacket, zip-up, zip up]
+  pant:         [pant, trouser]
+  set:          [set, 2 piece, two piece, piece set]
+
+match:
+  top_k: 8
+  category_gate: false
+  construction_as_filter: false

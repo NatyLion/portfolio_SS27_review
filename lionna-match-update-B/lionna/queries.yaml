@@ -1,0 +1,106 @@
+# ============================================================
+# LIONNA SS27 — query pieces (LEFT side of the match)
+#   category      : must be one of config.categories keys
+#   construction  : LIONNA's intended method (drives the mismatch flag) — all cut-and-sew (Phase 1)
+#   attrs         : defining features, 0..1 salience (higher = more defining)
+# Vocabulary is shared with the vision tagging pass (TAG_PROMPT.md reads these names).
+# ============================================================
+
+# ---------------------- TOPS ----------------------
+
+- name: Top Ventus
+  category: sports bra
+  construction: cut-and-sew
+  attrs: {mesh_bust: 1.0, sheer_mesh_panel: 0.8, racerback: 0.7, bra_length: 1.0, scoop_neck: 0.6, shelf_bra: 0.8}
+
+- name: Top Aurora
+  category: sports bra
+  construction: cut-and-sew
+  attrs: {high_neck: 1.0, keyhole_front: 1.0, sheer_mesh_panel: 0.8, bra_length: 1.0, shelf_bra: 0.7}
+
+- name: Top Lioness
+  category: sports bra
+  construction: cut-and-sew
+  attrs: {strappy_back: 1.0, scoop_neck: 0.7, bra_length: 1.0, shelf_bra: 0.7, sculpt: 0.6}
+
+- name: Top 01
+  category: sports bra
+  construction: cut-and-sew
+  attrs: {teardrop_back: 1.0, keyhole_back: 1.0, racerback: 0.8, bra_length: 1.0, scoop_neck: 0.6, opaque_body: 1.0}
+
+- name: Top 02
+  category: sports bra
+  construction: cut-and-sew
+  attrs: {racerback: 1.0, teardrop_back: 0.9, keyhole_back: 0.8, bra_length: 1.0, scoop_neck: 0.6}
+
+- name: Longline Support Tank
+  category: tank
+  construction: cut-and-sew
+  attrs: {longline: 1.0, racerback: 0.8, scoop_neck: 0.6, sculpt: 0.8, opaque_body: 1.0, shelf_bra: 0.7}
+
+- name: Refined Mesh Layer Top
+  category: long sleeve
+  construction: cut-and-sew
+  attrs: {sheer_mesh_panel: 1.0, fitted_sculpt: 1.0, layering: 1.0, crew_neck: 1.0, thumbhole: 0.5, opaque_body: 1.0}
+
+- name: Work Sculpt Tank
+  category: tank
+  construction: cut-and-sew
+  attrs: {racerback: 1.0, sculpt: 1.0, scoop_neck: 0.6, cropped: 0.7, opaque_body: 1.0}
+
+- name: Court Longline Polo
+  category: polo
+  construction: cut-and-sew
+  attrs: {polo_collar: 1.0, longline: 1.0, placket: 1.0, court_aesthetic: 1.0, keyhole_back: 0.6}
+
+- name: Court Polo Knit Top
+  category: polo
+  construction: cut-and-sew
+  attrs: {polo_collar: 1.0, short_sleeve: 1.0, knit: 0.7, cropped: 0.6, placket: 0.8}
+
+- name: Top 05
+  category: sports bra
+  construction: cut-and-sew
+  attrs: {double_strap_back: 1.0, bra_length: 1.0, scoop_neck: 0.6, sculpt: 0.6, shelf_bra: 0.7}
+
+- name: Top 06
+  category: sports bra
+  construction: cut-and-sew
+  attrs: {square_neck: 1.0, bra_length: 1.0, racerback: 0.6, sculpt: 0.6, shelf_bra: 0.7}
+
+# ---------------------- BOTTOMS ----------------------
+
+- name: Sculpt Performance Legging
+  category: legging
+  construction: cut-and-sew
+  attrs: {high_waist: 1.0, sculpt_seams: 1.0, no_front_seam: 1.0, squat_proof: 1.0, full_length: 1.0, three_claw_detail: 0.4}
+
+- name: Work Sculpt Straight Pant
+  category: pant
+  construction: cut-and-sew
+  attrs: {high_waist: 1.0, front_pleat: 1.0, straight_leg: 1.0, hidden_pocket: 0.8, clean_front: 1.0, three_claw_detail: 0.4}
+
+- name: Court Tailored Pant
+  category: pant
+  construction: cut-and-sew
+  attrs: {high_waist: 0.8, piping: 1.0, clean_front: 1.0, hidden_pocket: 0.8, tailored: 1.0, three_claw_detail: 0.4}
+
+- name: Executive Wide Leg Pant
+  category: pant
+  construction: cut-and-sew
+  attrs: {high_waist: 1.0, wide_leg: 1.0, premium_drape: 1.0, back_curved_yoke: 0.8, hidden_pocket: 0.8}
+
+- name: Soft Flare Active Pant
+  category: pant
+  construction: cut-and-sew
+  attrs: {high_waist: 1.0, flare: 1.0, sculpt_seams: 1.0, no_front_seam: 1.0, premium_drape: 0.7}
+
+- name: Travel Utility Pant
+  category: pant
+  construction: cut-and-sew
+  attrs: {comfort_waist: 1.0, drawcord: 1.0, utility_pocket: 1.0, cargo_pocket: 0.8, elastic_cuff: 1.0, tapered_jogger: 0.8}
+
+- name: Layered Wide Leg Pant
+  category: pant
+  construction: cut-and-sew
+  attrs: {layered_waistband: 1.0, wide_leg: 1.0, premium_drape: 1.0, back_curved_yoke: 0.8, hidden_pocket: 0.7}
